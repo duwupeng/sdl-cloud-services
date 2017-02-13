@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: ms-sms
+  cloud:
+    stream:
+      bindings:
+        input_channel:            #channelName
+             destination: sms_mq         #destination，或者可以认为是发布－订阅模型里面的topic
+             binder: rabbit1
+        input_channel_another:                  #channelName
+             destination: send         #destination，或者可以认为是发布－订阅模型里面的topic
+             binder: rabbit1
+
+      binders:
+        rabbit1:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.1.158   #rabbitMQ服务器地址
+                port: 5672          #rabbitMQ服务器端口
+                username: guest
+                password: guest
+                virtual-host: /
+
+                #service discovery url
+eureka:
+   client:
+      serviceUrl:
+           defaultZone: http://192.168.1.235:29003/eureka/
+
+#service name
+
+server:
+     port: 28006
+
+logging:
+  level:
+     com:
+        talebase:
+               cloud:
+                   ms:
+                     sms:
+                        dao: DEBUG

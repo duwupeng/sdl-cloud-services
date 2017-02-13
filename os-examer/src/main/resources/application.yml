@@ -1,0 +1,32 @@
+#service discovery url
+eureka:
+   client:
+      serviceUrl:
+           defaultZone: http://192.168.1.235:29003/eureka/
+   instance:
+       leaseRenewalIntervalInSeconds: 3
+       leaseExpirationDurationInSeconds: 9
+#service name
+spring:
+  application:
+    name: os-examer
+  redis:
+    host: 192.168.1.158
+    password:
+    port: 6379
+    pool:
+       max-wait: -1
+       max-idle: 8
+       min-idle: 1
+    timeout: 0
+  http:
+    multipart:
+      max-file-size: 10MB
+server:
+     port: 27002
+
+file:
+  attachmentPath: /data/bz-release-package/
+  domain: http://exam-img.cepin.net/
+schedule:
+  enable: true

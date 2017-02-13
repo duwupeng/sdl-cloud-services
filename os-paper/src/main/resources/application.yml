@@ -1,0 +1,27 @@
+#service discovery url
+eureka:
+   client:
+      serviceUrl:
+           defaultZone: http://192.168.1.235:29003/eureka/
+   instance:
+       leaseRenewalIntervalInSeconds: 3
+       leaseExpirationDurationInSeconds: 9
+
+#service name
+spring:
+  application:
+    name: os-paper
+  redis:
+     database: 0
+     host: 192.168.1.158
+     password:
+     port: 6379
+     pool:
+         max-active: 8
+         max-wait: -1
+         max-idle: 8
+         min-idle: 1
+     timeout: 0
+server:
+     port: 27004
+

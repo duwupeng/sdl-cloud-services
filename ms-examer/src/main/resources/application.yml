@@ -1,0 +1,44 @@
+#service discovery url
+eureka:
+   client:
+      serviceUrl:
+           defaultZone: http://192.168.1.235:29003/eureka/
+   instance:
+       leaseRenewalIntervalInSeconds: 3
+       leaseExpirationDurationInSeconds: 9
+
+#server port
+server:
+     port: 28008
+
+
+#service name
+spring:
+  application:
+    name: ms-examer
+
+datasource.examer:
+  url: jdbc:mysql://192.168.1.242:3306/examerDb?serverTimezone=GMT%2b8&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+  username: bzceshi
+  password: 123123x
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  max-active: 30
+  max-idle: 10
+  max-wait: 5000
+  initial-size: 5
+  validation-query: SELECT 1
+  type: com.alibaba.druid.pool.DruidDataSource
+
+#druid
+druid:
+  loginUsername: admin
+  loginPassword: admin
+
+logging:
+   level:
+      com:
+         talebase:
+                cloud:
+                    ms:
+                      examer:
+                           dao: DEBUG

@@ -1,0 +1,50 @@
+#service discovery url
+eureka:
+   client:
+      serviceUrl:
+           defaultZone: http://192.168.1.235:29003/eureka/
+   instance:
+       leaseRenewalIntervalInSeconds: 3
+       leaseExpirationDurationInSeconds: 9
+
+#service name
+spring:
+  application:
+    name: os-login
+  cloud:
+      stream:
+        bindings:
+          email_output_channel:            #channelName
+               destination: email_mq        #destination，或者可以认为是发布－订阅模型里面的topic
+               binder: rabbit_notify_mq
+          sms_output_channel:            #channelName
+               destination: sms_mq        #destination，或者可以认为是发布－订阅模型里面的topic
+               binder: rabbit_notify_mq
+        binders:
+          rabbit_notify_mq:
+            type: rabbit
+            environment:
+              spring:
+                rabbitmq:
+                  host: 192.168.1.158   #rabbitMQ服务器地址
+                  port: 5672            #rabbitMQ服务器端口
+                  username: guest
+                  password: guest
+                  virtual-host: /
+  redis:
+        host: 192.168.1.158
+        database: 15
+        password:
+        port: 6379
+        pool:
+            max-wait: -1
+            max-idle: 8
+            min-idle: 1
+        timeout: 0
+server:
+     port: 27003
+#禁止发送短信验证码规则，verifyCode_time为分钟数，以逗号分隔；
+#verifyCode_count为限制发送条数，同样逗号分隔，与verifyCode_time位置对应，组成多条规则
+verifyCode_time: 1,5
+verifyCode_count: 1,3
+valid_time: 15

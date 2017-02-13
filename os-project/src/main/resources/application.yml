@@ -1,0 +1,46 @@
+#service discovery url
+eureka:
+   client:
+      serviceUrl:
+           defaultZone: http://192.168.1.235:29003/eureka/
+   instance:
+       leaseRenewalIntervalInSeconds: 3
+       leaseExpirationDurationInSeconds: 9
+#service name
+spring:
+  application:
+    name: os-project
+  cloud:
+    stream:
+      bindings:
+        email_output_channel:            #channelName
+             destination: email_mq        #destination，或者可以认为是发布－订阅模型里面的topic
+             binder: rabbit_notify_mq
+        sms_output_channel:            #channelName
+             destination: sms_mq        #destination，或者可以认为是发布－订阅模型里面的topic
+             binder: rabbit_notify_mq
+      binders:
+        rabbit_notify_mq:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.1.158   #rabbitMQ服务器地址
+                port: 5672            #rabbitMQ服务器端口
+                username: guest
+                password: guest
+                virtual-host: /
+
+
+examineeUrl: http://exam.cepin.net/exam/login
+examinerUrl: http://exam.cepin.net/customer/login
+codePath: /data/bz-release-package/qrcode/
+#port
+server:
+    port: 27005
+
+schedule:
+  enable: true
+
+
+

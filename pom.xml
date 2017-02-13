@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.sdl.cloud</groupId>
+  <artifactId>sdl-services</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>api-gateway</module>
+    <module>base-domain</module>
+    <module>common</module>
+    <module>registration-center</module>
+    <module>ms-email</module>
+    <module>ms-admin</module>
+    <module>ms-notify</module>
+    <module>ms-sms</module>
+    <module>ms-company</module>
+    <module>ms-common</module>
+    <module>ms-project</module>
+    <module>ms-paper</module>
+    <module>ms-exercise</module>
+    <module>ms-examer</module>
+    <module>ms-consumption</module>
+    <module>os-admin</module>
+    <module>os-project</module>
+    <module>os-paper</module>
+    <module>os-examer</module>
+    <module>os-consumption</module>
+    <module>os-login</module>
+  </modules>
+  <packaging>pom</packaging>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.4.1.RELEASE</version>
+  </parent>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>Camden.SR2</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+
+
+  </dependencyManagement>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+  </properties>
+
+</project>
